@@ -61,22 +61,13 @@ export default function WorkspaceLayout({ children }: WorkspaceLayoutProps) {
 
   useEffect(() => {
     ;(async () => {
-      console.log("benda session layout", await supabase.auth.getSession())
-      const { data, error } = await supabase.auth.getSession()
-
-      if (error) {
-        console.error("Error getting session:", error.message)
-        return router.push("/login")
-      }
-      console.log(data)
-      const session = data.session
+      const session = (await supabase.auth.getSession()).data.session
 
       if (!session) {
-        console.log("No session found")
         return router.push("/login")
+      } else {
+        await fetchWorkspaceData(workspaceId)
       }
-
-      await fetchWorkspaceData(workspaceId)
     })()
   }, [])
 

@@ -6,24 +6,28 @@ import { cookies } from "next/headers"
 export async function getServerProfile() {
   const cookieStore = cookies()
   const supabase = createServerClient<Database>(
+    //"http://127.0.0.1:54321", //
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
         get(name: string) {
+          console.log("Benda cookies name:", name)
           return cookieStore.get(name)?.value
         }
       }
     }
   )
-
+  supabase.auth.url = "http://localhost:54321/auth/v1"
   const user = (await supabase.auth.getUser()).data.user
   if (!user) {
     throw new Error("User not found")
   }
 
-  const { data: profile } = await supabase
-    .from("profiles")
+  const profiles = supabase.from("profiles")
+  profiles.url = new URL("http://localhost:54321/rest/v1/profiles")
+
+  const { data: profile } = await profiles
     .select("*")
     .eq("user_id", user.id)
     .single()
