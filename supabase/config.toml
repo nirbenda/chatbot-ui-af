@@ -69,7 +69,7 @@ enable_signup = true
 
 [auth.email]
 # Allow/disallow new user signups via email to your project.
-enable_signup = true
+enable_signup = false
 # If enabled, a user will be required to confirm any email change on both the old, and new email
 # addresses. If disabled, only the new email is required to confirm.
 double_confirm_changes = true
@@ -83,7 +83,7 @@ enable_confirmations = false
 
 [auth.sms]
 # Allow/disallow new user signups via SMS to your project.
-enable_signup = true
+enable_signup = false
 # If enabled, users need to confirm their phone number before signing in.
 enable_confirmations = false
 
@@ -115,3 +115,12 @@ port = 54327
 vector_port = 54328
 # Configure one of the supported backends: `postgres`, `bigquery`
 backend = "postgres"
+
+[auth.external.saml]
+enabled = true
+entity_id = "https://appsflyer.okta.com/app/appsflyer_chatbot_1/exk100xu12lVCM8Vb1t8/sso/saml"
+metadata_url = "https://appsflyer.okta.com/app/appsflyer_chatbot_1/exk100xu12lVCM8Vb1t8/sso/saml"
+acs_url = "https://afai.it.appsflyer.com/auth/v1/sso/saml/acs"
+slo_url = "http://localhost:54321/auth/v1/sso/saml/slo"
+client_id = "your-okta-client-id"
+secret = "MIIDojCCAoqgAwIBAgIGAZAlTf9mMA0GCSqGSIb3DQEBCwUAMIGRMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEjAQBgNVBAMMCWFwcHNmbHllcjEcMBoGCSqGSIb3DQEJARYNaW5mb0Bva3RhLmNvbTAeFw0yNDA2MTcwODI1MjdaFw0zNDA2MTcwODI2MjZaMIGRMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxEjAQBgNVBAMMCWFwcHNmbHllcjEcMBoGCSqGSIb3DQEJARYNaW5mb0Bva3RhLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOf5AcQ1o3kBtZG9OHoEp7mwCM/HITyoI8/ctyOgiamVKpkFoE+KGGHM/BpJ0xLiH6iiDEgwgvOTl7tTEln4cSdaetkSESR/7IoFtyJCdF/77pIHBIiF/x6/xChO7ZbnG5p/D2yJ+YNrECqELnps8XHVKB5g9ss/EmFXdEo9HPvnsbbClouEohLNj+hXP4X/QG2jTy1H6nOMXkJLfv1tNhnebD9X1X7aoFnqhCOBAVN4idH8lTRGe4oqBYrzac5Oi3RyMSufg+403taBO8VBPlCCiPLE694Uw3/YadpClDoCtIMAlycWq9K1Waxx9Af2nAnUnTB0wWwwBjfZVRlTQN8CAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAGjeENOZIK4r8cFsXGNIaa0t2/0j5i7T3FPoN4YfDb6QRhKOsa3S6kyXUPffP9AYjpSnG9qBY3EEekRS1lgP8eHW4uHpQIBbC4REABBYBThbXp06RlIGlD2Pt3ECDqHRDD6qbnB2ijBNS2FZ8m8E6nD3mY0Rx31tT7ovYTAsWUUjZ8KYTR3IXZfCvQZeAjQh+jk6TXalJXI9Sfh7QIhX+jEAImH4U1EYsFIHBKpZk5mQiFhagf+CtShcfrZSKZGAGYiJH0gllAFPW01oF6p9i3sRhy685iBA9NJoK2IgBgQ3hQzOA9Iwj2JP91UTBMPUf7uj2FQXwBFK65TUBNS46vA=="
