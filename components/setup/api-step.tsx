@@ -100,7 +100,7 @@ export const APIStep: FC<APIStepProps> = ({
         />
       </div>
 
-      <div className="ml-8 space-y-3">
+      <div className="ml-8 space-y-3" style=""style={{ display: 'none' }}>
         {useAzureOpenai ? (
           <>
             <div className="space-y-1">
