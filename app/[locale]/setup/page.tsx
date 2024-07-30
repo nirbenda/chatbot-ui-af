@@ -93,6 +93,7 @@ export default function SetupPage() {
           const homeWorkspaceId = await getHomeWorkspaceByUserId(
             session.user.id
           )
+          return window.location.assign(`/${homeWorkspaceId}/chat`) // refresh page instead of router
           return router.push(`/${homeWorkspaceId}/chat`)
         }
       }
@@ -152,6 +153,7 @@ export default function SetupPage() {
     setSelectedWorkspace(homeWorkspace!)
     setWorkspaces(workspaces)
 
+    return window.location.assign(`/${homeWorkspace?.id}/chat`)
     return router.push(`/${homeWorkspace?.id}/chat`)
   }
 
