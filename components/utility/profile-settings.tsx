@@ -291,7 +291,10 @@ export const ProfileSettings: FC<ProfileSettingsProps> = ({}) => {
     }
   }
 
-  if (!profile) return null
+  if (!profile) {
+    return window.location.reload();
+    return null
+  }
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
