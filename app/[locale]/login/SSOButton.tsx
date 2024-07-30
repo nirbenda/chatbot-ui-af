@@ -127,6 +127,7 @@ const SSOButton = () => {
             // Redirect to the home workspace
             const homeWorkspace = workspaces.find(ws => ws.is_home)
             if (homeWorkspace) {
+              return window.location.assign(`/${homeWorkspace.id}/chat`)
               return router.push(`/${homeWorkspace.id}/chat`)
             } else {
               // If no home workspace found, create one
@@ -166,6 +167,7 @@ const SSOButton = () => {
                 )
               }
 
+              return window.location.assign(`/${homeWorkspace.id}/chat`)
               return router.push(`/${createdHomeWorkspace.id}/chat`)
             }
           }
